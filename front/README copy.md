@@ -1,6 +1,6 @@
-# ProductsApp Frontend
+# ALTEN SHOP FRONT
 
-Bienvenue dans la partie **frontend** de l'application **ProductsApp**. Cette partie est développée en utilisant **Angular** et consomme les services REST fournis par le backend Flask.
+Bienvenue dans la partie **frontend** de l'application **ALTEN SHOP FRONT**. Cette partie est développée en utilisant **Angular** et consomme les services REST fournis par le backend Flask.
 
 ## Prérequis
 
