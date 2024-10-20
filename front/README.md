@@ -16,7 +16,7 @@ Bienvenue dans la partie **frontend** de l'application **ALTEN SHOP FRONT**. Cet
 1. **Clonez le dépôt** (si ce n'est pas déjà fait) :
 
    ```bash
-   git clone [<lien-du-repository>](https://github.com/fatima5545/AppProducts.git)
+   git clone https://github.com/fatima5545/AppProducts.git
    cd front
    ```
 
