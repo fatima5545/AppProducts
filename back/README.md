@@ -130,7 +130,7 @@ Cela va :
 Le swagger sera disponible à l'adresse suivante :
 
 ```
-http://localhost:5000
+http://localhost:5000/swagger
 ```
 
 ---
