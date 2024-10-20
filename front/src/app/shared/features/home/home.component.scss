@@ -1,0 +1,57 @@
+.background-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* Prendre toute la hauteur de la fenêtre */
+  background: url("https://img.freepik.com/free-photo/abstract-dark-blurred-background-smooth-gradient-texture-color-shiny-bright-website-pattern-banner-header-sidebar-graphic-art-image_1258-85517.jpg")
+    no-repeat center center;
+  background-size: cover;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Superposition sombre pour améliorer la lisibilité */
+}
+
+.content-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  z-index: 1; /* Pour s'assurer que le contenu soit au-dessus de la superposition */
+  text-align: center;
+}
+
+.header-app {
+  background-color: #ffffff;
+  color: #333333;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: 30px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.app-title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.p-button-rounded {
+  font-size: 16px;
+  padding: 12px 25px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.p-button-rounded:hover {
+  transform: scale(1.05);
+}

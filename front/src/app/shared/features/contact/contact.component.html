@@ -1,0 +1,80 @@
+<div class="container">
+  <p-card header="Mettre à jour vos informations" [ngClass]="'card-style'">
+    <p-toast position="bottom-left" key="bl" />
+    <form #form="ngForm" (ngSubmit)="checkForm(form)" novalidate>
+      <span class="p-text-secondary block mb-5">
+        Veuillez mettre à jour vos informations.
+      </span>
+
+      <!-- Champ Email -->
+      <div class="mb-3">
+        <label for="email" class="font-semibold">Email</label>
+        <input
+          pInputText
+          id="email"
+          name="email"
+          class="w-full"
+          required
+          type="email"
+          [(ngModel)]="user.email"
+          #email="ngModel"
+        />
+
+        <!-- Message d'erreur si l'email est invalide ou vide, affiché sous le champ -->
+        <small
+          class="p-error block mt-2"
+          *ngIf="email.invalid && email.touched"
+        >
+          {{ email.errors?.required ? "Email obligatoire" : "Email invalide" }}
+        </small>
+      </div>
+
+      <!-- Champ Message -->
+      <div class="mb-3">
+        <label for="message" class="font-semibold">Message</label>
+        <textarea
+          [rows]="5"
+          [cols]="30"
+          pInputTextarea
+          id="message"
+          name="message"
+          class="w-full"
+          required
+          maxlength="300"
+          [(ngModel)]="user.message"
+          #message="ngModel"
+        ></textarea>
+
+        <!-- Affichage du nombre de caractères restants sous le textarea -->
+        <small
+          class="block mt-2"
+          [ngClass]="{
+            'p-error': message.errors?.maxlength && message.touched
+          }"
+        >
+          {{ 300 - (user.message?.length || 0) }} caractères restants
+        </small>
+
+        <!-- Message d'erreur sous le textarea si le message dépasse 300 caractères -->
+        <small
+          class="p-error block"
+          *ngIf="message.errors?.maxlength && message.touched"
+        >
+          Le message ne doit pas dépasser 300 caractères
+        </small>
+        <!-- Message d'erreur si l'email est invalide ou vide, affiché sous le champ -->
+        <small
+          class="p-error block mt-2"
+          *ngIf="message.invalid && message.touched"
+        >
+          message obligatoire
+        </small>
+      </div>
+
+      <!-- Bouton d'envoi -->
+      <div class="flex justify-content-end gap-2">
+        <p-button label="Envoyer" type="submit"></p-button>
+      </div>
+    </form>
+  </p-card>
+</div>

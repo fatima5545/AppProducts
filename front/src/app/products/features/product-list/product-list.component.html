@@ -1,0 +1,127 @@
+<h1 class="text-center">Liste des produits</h1>
+<p-toast position="bottom-left" key="bl"></p-toast>
+<p-button
+  label="Créer produit"
+  (onClick)="onCreate()"
+  class="block text-center mb-4"
+></p-button>
+<!-- Barre de recherche -->
+<div class="search-container mb-2">
+  <span class="p-input-icon-left search-box">
+    <input
+      type="text"
+      pInputText
+      placeholder="Rechercher..."
+      (input)="onGlobalFilter($event)"
+      class="search-input"
+    />
+  </span>
+</div>
+
+<p-dataView
+  [value]="filteredProducts"
+  [paginator]="true"
+  [rows]="25"
+  [rowsPerPageOptions]="[9, 18, 27]"
+>
+  <ng-template pTemplate="listItem" let-products>
+    <div class="p-grid">
+      <div class="p-col-12 p-md-4" *ngFor="let product of products">
+        <div class="product-item" style="margin: 0.7rem">
+          <p-card class="block mb-2 card-product">
+            <ng-template pTemplate="header">
+              <img
+                [src]="
+                  product.image ||
+                  'https://via.placeholder.com/300x200?text=No+Image'
+                "
+                alt="{{ product.name }}"
+                class="product-image"
+                style="height: 200px; width: 100%; object-fit: cover"
+              />
+            </ng-template>
+
+            <!-- Catégorie de produit -->
+            <span class="font-medium text-secondary text-sm">
+              {{ product.category }}
+            </span>
+
+            <!-- Nom du produit -->
+            <div class="text-lg font-medium text-900 mt-2">
+              {{ product.name }}
+            </div>
+
+            <!-- Description du produit -->
+            <div class="text-secondary mt-2">{{ product.description }}</div>
+
+            <!-- Prix et quantité du produit -->
+            <div class="flex justify-between align-items-center mt-2">
+              <div class="font-bold text-lg text-primary">
+                Prix: {{ product.price | currency : "EUR" }}
+              </div>
+              <div class="font-medium text-secondary">
+                Quantité: {{ product.quantity }}
+              </div>
+            </div>
+
+            <!-- État de l'inventaire (Stock) -->
+            <div class="text-sm text-secondary mt-1">
+              Statut de l'inventaire :
+              <span
+                [ngClass]="{
+                  'text-success': product.inventoryStatus === 'INSTOCK',
+                  'text-warning': product.inventoryStatus === 'LOWSTOCK',
+                  'text-danger': product.inventoryStatus === 'OUTOFSTOCK'
+                }"
+              >
+                {{ product.inventoryStatus }}
+              </span>
+            </div>
+
+            <!-- Note du produit -->
+            <div class="mt-1">
+              <p-rating
+                [(ngModel)]="product.rating"
+                [readonly]="true"
+                [stars]="5"
+              ></p-rating>
+            </div>
+
+            <!-- boutons Modifier/Supprimer -->
+            <ng-template pTemplate="footer">
+              <div class="flex gap-3 mt-1 footer">
+                <p-button
+                  label="Modifier"
+                  severity="secondary"
+                  (onClick)="onUpdate(product)"
+                ></p-button>
+                <p-button
+                  label="Supprimer"
+                  severity="danger"
+                  (onClick)="onDelete(product)"
+                ></p-button>
+                <p-button
+                  label="Ajouter au panier"
+                  icon="pi pi-shopping-cart"
+                  (onClick)="addToCart(product)"
+                ></p-button>
+              </div>
+            </ng-template>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-dataView>
+
+<p-dialog
+  [(visible)]="isDialogVisible"
+  [style]="{ width: '50vw' }"
+  header="Ajout/Edition produit"
+>
+  <app-product-form
+    [product]="editedProduct()"
+    (save)="onSave($event)"
+    (cancel)="onCancel()"
+  />
+</p-dialog>

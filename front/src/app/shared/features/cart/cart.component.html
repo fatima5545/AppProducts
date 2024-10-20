@@ -1,0 +1,67 @@
+<p-dataView [value]="getCartProducts()" layout="list">
+  <ng-template pTemplate="listItem" let-products>
+    <div class="p-col-12 p-md-4" *ngFor="let product of products">
+      <div class="product-card">
+        <div class="product-image">
+          <img [src]="product.image" alt="{{ product.name }}" />
+        </div>
+        <div class="product-details">
+          <div class="product-header">
+            <div class="product-title">{{ product.name }}</div>
+            <div class="product-info">
+              <span class="product-code">Code: {{ product.code }}</span>
+              <span class="product-category"
+                >Catégorie: {{ product.category }}</span
+              >
+            </div>
+            <div class="product-status">
+              Statut :
+              <span
+                [ngClass]="{
+                  'in-stock': product.inventoryStatus === 'INSTOCK',
+                  'low-stock': product.inventoryStatus === 'LOWSTOCK',
+                  'out-stock': product.inventoryStatus === 'OUTOFSTOCK'
+                }"
+              >
+                {{ product.inventoryStatus }}
+              </span>
+            </div>
+          </div>
+
+          <div class="product-footer">
+            <div class="product-price">
+              <span class="current-price">{{
+                product.price | currency : "EUR"
+              }}</span>
+            </div>
+            <div class="product-actions">
+              <div class="quantity-selector">
+                <label>Qty:</label>
+                <p-dropdown
+                  [options]="quantities"
+                  [(ngModel)]="product.quantity"
+                ></p-dropdown>
+              </div>
+              <div class="action-icons">
+                <button
+                  (click)="removeFromCart(product)"
+                  class="p-button p-button-text"
+                  style="position: relative"
+                >
+                  <i class="pi pi-trash" style="font-size: 2rem"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="product-rating">
+            <p-rating
+              [(ngModel)]="product.rating"
+              [readonly]="true"
+              [stars]="5"
+            ></p-rating>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-dataView>

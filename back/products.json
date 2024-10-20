@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "code": "string",
+        "name": "string",
+        "description": "string",
+        "image": "string",
+        "category": "string",
+        "price": 0,
+        "quantity": 0,
+        "internal_reference": "string",
+        "shell_id": 0,
+        "inventory_status": "string",
+        "rating": 0
+    }
+]

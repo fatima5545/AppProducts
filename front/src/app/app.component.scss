@@ -1,0 +1,32 @@
+.custom-toolbar {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: grey;
+}
+
+.toolbar-logo {
+  height: 60px; /* Ajuster la taille du logo */
+}
+
+.toolbar-title {
+  font-size: 1.5rem; /* Taille du titre */
+  font-weight: bold;
+  text-align: center;
+  display: block;
+}
+
+.cart-icon {
+  font-size: 2rem;
+}
+
+.custom-splitter {
+  height: calc(
+    100vh - 100px
+  ); /* Espace pour prendre en compte la hauteur de la toolbar */
+}
+
+.background-container {
+  background-color: aquamarine;
+}

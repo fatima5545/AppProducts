@@ -1,0 +1,43 @@
+<p-toolbar [style]="{ height: '100px' }">
+  <div class="p-toolbar-group-start">
+    <img src="assets/icons/icon-72x72.png" alt="logo" />
+  </div>
+  <div class="p-toolbar-group-center">
+    {{ title }}
+  </div>
+  <div class="p-toolbar-group-end">
+    <button
+      (click)="goToCart()"
+      class="p-button p-button-text"
+      style="position: relative"
+    >
+      <i class="pi pi-shopping-cart" style="font-size: 2rem"></i>
+
+      <!-- Badge pour la quantité de produits -->
+      <span *ngIf="getCartQuantity() > 0" class="cart-badge">
+        {{ getCartQuantity() }}
+      </span>
+    </button>
+  </div>
+</p-toolbar>
+<p-splitter [panelSizes]="[20, 80]" [style]="{ height: 'calc(100vh - 100px)' }">
+  <ng-template pTemplate>
+    <div class="w-full">
+      <app-panel-menu />
+    </div>
+  </ng-template>
+  <ng-template pTemplate>
+    <div class="w-full app-content">
+      <router-outlet></router-outlet>
+    </div>
+  </ng-template>
+</p-splitter>
+
+<!-- Dialog pour voir le panier -->
+<p-dialog
+  [(visible)]="isDialogVisible"
+  [style]="{ width: '50vw' }"
+  header="Les produits du panier"
+>
+  <app-cart />
+</p-dialog>
