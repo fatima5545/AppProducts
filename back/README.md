@@ -180,6 +180,8 @@ tests/test_api.py::test_delete_product
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
 ================================= 5 passed, 69 warnings in 0.24s ================================= 
 ```
+<img width="544" alt="image" src="https://github.com/user-attachments/assets/ecb68aa0-d3c1-4b62-8ada-fa0b4e689fd9">
+
 
 ### 3. Tests spécifiques
 
