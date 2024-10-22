@@ -136,4 +136,74 @@ http://localhost:5000/swagger
 <img width="732" alt="image" src="https://github.com/user-attachments/assets/b5662655-3955-437a-927e-1713a848ebf9">
 
 
+## Tests de l'API ProductsApp
+
+Cette partie détaille comment exécuter les tests unitaires pour l'API de l'application. Les tests sont basés sur `pytest`
+
+### Prérequis
+
+Avant d'exécuter les tests, assurez-vous d'avoir installé les dépendances nécessaires.
+
+
+
+### Structure des fichiers de test
+
+- `configtest.py` : Ce fichier configure l'application Flask pour les tests.
+- `test_api.py` : Ce fichier contient les tests unitaires pour l'API des produits.
+
+### 1. Lancer les tests
+
+Pour exécuter tous les tests dans le répertoire `tests/`, exécutez la commande suivante depuis la racine du projet :
+
+```bash
+pytest
+```
+
+Cette commande exécutera tous les tests définis dans le dossier `tests/`.
+
+### 2. Résultats des tests
+
+Après l'exécution, `pytest` affichera les résultats dans le terminal, indiquant si les tests ont réussi ou échoué. Voici un exemple de sortie si tous les tests réussissent :
+
+```
+====================================== test session starts =======================================
+platform win32 -- Python 3.12.4, pytest-8.3.3, pluggy-1.5.0
+plugins: flask-1.3.0
+collected 5 items
+
+tests\test_api.py .....                                                                     [100%]
+tests/test_api.py::test_create_product
+tests/test_api.py::test_patch_product
+tests/test_api.py::test_get_product_by_id
+tests/test_api.py::test_delete_product
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================= 5 passed, 69 warnings in 0.24s ================================= 
+```
+
+### 3. Tests spécifiques
+
+Si vous souhaitez exécuter un seul fichier de test ou un test spécifique, utilisez l'une des commandes suivantes :
+
+- **Exécuter un fichier de test spécifique :**
+
+  ```bash
+  pytest tests/test_api.py
+  ```
+
+- **Exécuter une fonction de test spécifique :**
+
+  ```bash
+  pytest tests/test_api.py::test_create_product
+  ```
+## Description des tests
+
+Les tests couvrent les principales fonctionnalités de l'API :
+
+- **`test_get_all_products`** : Vérifie que la récupération de tous les produits fonctionne et renvoie un statut `200 OK` avec une liste de produits.
+- **`test_create_product`** : Vérifie que la création d'un produit fonctionne correctement et que l'API renvoie un statut `201 Created` avec un message de succès.
+- **`test_get_product_by_id`** : Vérifie que la récupération d'un produit par son ID fonctionne et renvoie les bonnes informations.
+- **`test_patch_product`** : Teste la mise à jour partielle d'un produit et s'assure que l'API retourne un message de succès.
+- **`test_delete_product`** : Vérifie que la suppression d'un produit par ID fonctionne et que le produit n'est plus disponible après la suppression.
+
 ---
