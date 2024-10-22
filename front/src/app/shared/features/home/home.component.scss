@@ -2,8 +2,6 @@
   position: relative;
   width: 100%;
   min-height: 100vh; /* Prendre toute la hauteur de la fenêtre */
-  background: url("https://img.freepik.com/free-photo/abstract-dark-blurred-background-smooth-gradient-texture-color-shiny-bright-website-pattern-banner-header-sidebar-graphic-art-image_1258-85517.jpg")
-    no-repeat center center;
   background-size: cover;
 }
 
@@ -13,12 +11,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(
-    0,
-    0,
-    0,
-    0.5
-  ); /* Superposition sombre pour améliorer la lisibilité */
+  // background: rgba(
+  //   0,
+  //   0,
+  //   0,
+  //   0.5
+  // ); /* Superposition sombre pour améliorer la lisibilité */
 }
 
 .content-container {

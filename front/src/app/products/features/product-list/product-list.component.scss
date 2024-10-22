@@ -1,16 +1,7 @@
 :host {
-  background-color: var(--background-color);
-  color: var(--primary-text-color);
-}
-
-.p-card {
-  background-color: var(--card-background);
-  color: var(--primary-text-color);
-}
-
-.p-button {
-  background-color: var(--button-background);
-  color: var(--button-text-color);
+  display: block;
+  height: 100%;
+  overflow: auto;
 }
 
 .card-product {
@@ -39,26 +30,6 @@
   justify-content: space-between;
 }
 
-.text-secondary {
-  color: #6c757d;
-}
-
-.text-primary {
-  color: #007bff;
-}
-
-.text-success {
-  color: #28a745;
-}
-
-.text-warning {
-  color: #ffc107;
-}
-
-.text-danger {
-  color: #dc3545;
-}
-
 .product-item {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -67,7 +38,8 @@
 
 .p-grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; // pour les alignerr en ligne
+  background-color: #d5dddf;
 }
 
 .search-container {
@@ -99,22 +71,8 @@
 
 .search-input::placeholder {
   color: #aaa;
-}
+} // couleur du placeholder
 
 .search-box:hover {
   background-color: #eaeaea;
-}
-
-.search-box:focus-within {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.search-icon {
-  color: #666;
-  font-size: 1.2rem;
-  transition: color 0.3s ease;
-}
-
-.search-box:hover .search-icon {
-  color: #333;
 }

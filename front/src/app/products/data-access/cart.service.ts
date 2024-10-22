@@ -34,10 +34,10 @@ export class CartService {
 
     if (existingProduct) {
       // Si le produit existe, augmenter la quantité
-      existingProduct.quantity += product.quantity;
+      existingProduct.addedQuantity += 1;
     } else {
       // Sinon, ajouter le produit au panier
-      currentProducts.push({ ...product }); // Faire une copie du produit pour éviter les modifications par référence
+      currentProducts.push({ ...product, addedQuantity: 1 }); // Faire une copie du produit pour éviter les modifications par référence
     }
 
     // Mettre à jour le BehaviorSubject

@@ -1,19 +1,17 @@
-<p-toolbar [style]="{ height: '100px' }">
-  <div class="p-toolbar-group-start">
-    <img src="assets/icons/icon-72x72.png" alt="logo" />
+<p-toolbar class="main-toolbar">
+  <div class="p-toolbar-group-start div-1">
+    <img src="assets/icons/ang.png" alt="logo" class="logo" />
   </div>
-  <div class="p-toolbar-group-center">
+  <div class="p-toolbar-group-center div-2">
     {{ title }}
   </div>
-  <div class="p-toolbar-group-end">
+  <div class="p-toolbar-group-center div-3">
     <button
       (click)="goToCart()"
-      class="p-button p-button-text"
+      class="p-button p-button-text cart-button"
       style="position: relative"
     >
-      <i class="pi pi-shopping-cart" style="font-size: 2rem"></i>
-
-      <!-- Badge pour la quantité de produits -->
+      <i class="pi pi-shopping-cart"></i>
       <span *ngIf="getCartQuantity() > 0" class="cart-badge">
         {{ getCartQuantity() }}
       </span>

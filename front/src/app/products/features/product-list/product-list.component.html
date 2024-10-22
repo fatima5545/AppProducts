@@ -1,5 +1,6 @@
 <h1 class="text-center">Liste des produits</h1>
 <p-toast position="bottom-left" key="bl"></p-toast>
+<!-- Button pour créer un produit -->
 <p-button
   label="Créer produit"
   (onClick)="onCreate()"
@@ -18,12 +19,8 @@
   </span>
 </div>
 
-<p-dataView
-  [value]="filteredProducts"
-  [paginator]="true"
-  [rows]="25"
-  [rowsPerPageOptions]="[9, 18, 27]"
->
+<!-- Dataview pour afficher l'ensemble des cartes -->
+<p-dataView [value]="filteredProducts" [paginator]="true" [rows]="25">
   <ng-template pTemplate="listItem" let-products>
     <div class="p-grid">
       <div class="p-col-12 p-md-4" *ngFor="let product of products">
@@ -113,7 +110,7 @@
     </div>
   </ng-template>
 </p-dataView>
-
+<!-- Dialogue pour ajout/modification d'un produit -->
 <p-dialog
   [(visible)]="isDialogVisible"
   [style]="{ width: '50vw' }"

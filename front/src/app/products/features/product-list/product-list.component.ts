@@ -29,6 +29,7 @@ const emptyProduct: Product = {
   rating: 0,
   createdAt: 0,
   updatedAt: 0,
+  addedQuantity: 0,
 };
 
 /**
@@ -115,7 +116,13 @@ export class ProductListComponent implements OnInit {
    * @param {Product} product - Le produit à supprimer.
    */
   public onDelete(product: Product) {
-    this.productsService.delete(product.id).subscribe();
+    this.productsService.delete(product.id).subscribe(() => {
+      this.showToast(
+        "info",
+        "Suppression réussie",
+        "Le produit a été supprimé avec succès !"
+      );
+    });
   }
 
   /**
@@ -132,11 +139,13 @@ export class ProductListComponent implements OnInit {
         );
       });
     } else {
-      this.showToast(
-        "success",
-        "Mise à jour réussie",
-        "Le produit a été mis à jour avec succès !"
-      );
+      this.productsService.update(product).subscribe(() => {
+        this.showToast(
+          "success",
+          "Modification réussie",
+          "Le produit a été modifié avec succès !"
+        );
+      });
     }
     this.closeDialog();
   }
@@ -153,8 +162,45 @@ export class ProductListComponent implements OnInit {
    * @param {Product} product - Le produit à ajouter au panier.
    */
   public addToCart(product: Product) {
-    this.cartProducts.push(product);
-    this.cartService.addProductToCart({ ...product, quantity: 1 });
+    // Find the product in the cart with the same code
+    let cartProduct = this.cartProducts.find((p) => p.code === product.code);
+
+    // Get the current quantity in the cart (addedQuantity), or 0 if the product is not yet in the cart
+    const currentQuantityInCart = cartProduct ? cartProduct.addedQuantity : 0;
+
+    // Check if the quantity exceeds the available stock
+    if (currentQuantityInCart + 1 > product.quantity) {
+      // Show warning if there's not enough stock
+      this.showToast(
+        "warn",
+        "Stock insuffisant",
+        `Il ne reste plus d'exemplaire de ce produit en stock.`
+      );
+    } else {
+      // If the product exists in the cart, update its addedQuantity
+      if (cartProduct) {
+        cartProduct.addedQuantity += 1;
+      } else {
+        // If the product doesn't exist in the cart, add it with an addedQuantity of 1
+        this.cartProducts.push({
+          ...product,
+          addedQuantity: 1,
+        });
+      }
+
+      // Update the cart service to reflect the changes in the cart
+      this.cartService.addProductToCart({
+        ...product,
+        addedQuantity: currentQuantityInCart,
+      });
+
+      // Show a success message
+      this.showToast(
+        "success",
+        "Produit ajouté",
+        `${product.name} a été ajouté au panier.`
+      );
+    }
   }
 
   /**

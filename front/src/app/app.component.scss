@@ -1,32 +1,176 @@
-.custom-toolbar {
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: grey;
+// Variables de couleurs Corporate Gris-Bleu
+$primary-color: #00acc1; // Gris-bleu foncé
+$primary-dark: #263238; // Plus foncé
+$primary-light: #455a64; // Plus clair
+$accent-color: #00acc1; // Turquoise
+$secondary-color: #ffffff; // Blanc
+$text-primary: #ffffff; // Texte blanc
+// $text-secondary: #ecf0f1; // Texte gris clair
+$border-color: #b0bec5; // Bordure gris-bleu clair
+$shadow-color: rgba(38, 50, 56, 0.12); // Ombre personnalisée
+$hover-color: rgba(0, 172, 193, 0.08); // Couleur de survol turquoise
+
+::ng-deep {
+  .p-toolbar {
+    height: 100px;
+    background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+    box-shadow: 0 2px 12px $shadow-color;
+    padding: 0 2rem;
+    transition: all 0.3s ease;
+    &:hover {
+      box-shadow: 0 4px 18px $shadow-color;
+    }
+  }
+
+  // Logo container
+  .div-1 {
+    img {
+      height: 50px;
+      filter: drop-shadow(0 2px 4px $shadow-color);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  // Titre central
+  .div-2 {
+    color: $text-primary;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  }
+
+  // Bouton panier
+  .p-button.p-button-text {
+    color: $text-primary;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    padding: 0.75rem;
+    // Added margin to ensure space for badge
+    margin-right: 8px;
+    margin-top: 8px;
+    position: relative;
+
+    &:hover {
+      background-color: rgba($accent-color, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .pi-shopping-cart {
+      color: $text-primary;
+      font-size: 1.5rem;
+      filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+    }
+  }
+
+  // Badge du panier - Updated positioning
+  .cart-badge {
+    background-color: $accent-color;
+    color: $text-primary;
+    border-radius: 50%;
+    padding: 4px 8px;
+    position: relative;
+    top: -10px; // Adjusted from -8px
+    right: -12px; // Adjusted from -8px
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 2px 4px $shadow-color;
+    min-width: 20px; // Added to ensure consistent width
+    height: 20px; // Added to ensure consistent height
+    display: flex; // Added for better number centering
+    align-items: center;
+    justify-content: center;
+    z-index: 1; // Ensure badge stays on top
+  }
 }
 
-.toolbar-logo {
-  height: 60px; /* Ajuster la taille du logo */
+// Style du splitter
+::ng-deep .p-splitter {
+  border: none;
+  background-color: #f5f7fa;
+
+  .p-splitter-panel {
+    .app-content {
+      padding: 1.75rem;
+      background-color: #f5f7fa;
+    }
+  }
+
+  .p-splitter-gutter {
+    background-color: $border-color;
+
+    &:hover {
+      background-color: $accent-color;
+    }
+  }
 }
 
-.toolbar-title {
-  font-size: 1.5rem; /* Taille du titre */
-  font-weight: bold;
-  text-align: center;
-  display: block;
+// Style du dialog
+::ng-deep .p-dialog {
+  .p-dialog-header {
+    background-color: $primary-color;
+    color: $text-primary;
+    border-bottom: 2px solid $accent-color;
+    padding: 1.25rem;
+  }
+
+  .p-dialog-content {
+    padding: 2rem;
+    background-color: #f5f7fa;
+  }
+
+  .p-dialog-footer {
+    border-top: 1px solid $border-color;
+    padding: 1.25rem;
+    background-color: #f8fafc;
+  }
 }
 
-.cart-icon {
-  font-size: 2rem;
+// Menu latéral
+::ng-deep .p-panelmenu {
+  .p-panelmenu-header-link {
+    background-color: transparent;
+    color: $primary-color;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+
+    &.p-highlight {
+      background-color: rgba($accent-color, 0.05);
+      border-left: 3px solid $accent-color;
+    }
+  }
+
+  .p-menuitem-link {
+    transition: all 0.3s ease;
+    color: $primary-dark;
+    padding: 0.75rem 1.25rem;
+    border-radius: 4px;
+    margin: 2px 0;
+
+    &:hover {
+      background-color: $hover-color;
+      padding-left: 1.5rem;
+    }
+
+    .p-menuitem-icon {
+      color: $accent-color;
+    }
+
+    .p-menuitem-text {
+      color: $primary-dark;
+    }
+  }
 }
 
-.custom-splitter {
-  height: calc(
-    100vh - 100px
-  ); /* Espace pour prendre en compte la hauteur de la toolbar */
-}
-
-.background-container {
-  background-color: aquamarine;
+.p-dialog-content {
+  animation: fadeIn 0.3s ease;
 }
