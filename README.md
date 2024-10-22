@@ -2,11 +2,11 @@
 
 Bienvenue dans l'application **AppProducts**. Ce projet est divisé en deux parties principales :
 
-### Backend
+### ⚠️ Démarrage du backend
 
 Vous pouvez consulter le fichier [README du Backend](./back/README.md) pour obtenir des instructions détaillées sur l'installation et la configuration du backend.
 
-### Frontend
+### ⚠️ Démarrage du Frontend
 
 De la même manière, vous pouvez consulter le fichier [README du Frontend](./front/README.md) pour obtenir des instructions détaillées sur l'installation et la configuration du frontend.
 

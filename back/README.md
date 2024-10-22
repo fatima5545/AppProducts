@@ -133,4 +133,7 @@ Le swagger sera disponible à l'adresse suivante :
 http://localhost:5000/swagger
 ```
 
+<img width="732" alt="image" src="https://github.com/user-attachments/assets/b5662655-3955-437a-927e-1713a848ebf9">
+
+
 ---
