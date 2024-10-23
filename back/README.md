@@ -103,12 +103,13 @@ SENDGRID_API_KEY=Votre_Clé_API_SendGrid
 SENDGRID_SENDER_EMAIL=Votre_Email_Expéditeur
 ```
 
-Ne partagez jamais ce fichier `.env` publiquement ou dans un dépôt de code.
+Ne partagez jamais ce fichier `.env` publiquement ou dans un dépôt de code, et à chaque fois l'API key et l'adresse mail doivent être bien stockés ailleurs de github pour des raisons de sécurité.
 
 ## Lancer l'Application et Tester
 
 Une fois toutes les étapes de configuration terminées, démarrez votre application Flask et testez l'envoi d'emails à partir de l'API. Vous pouvez utiliser Postman ou un autre outil pour envoyer une requête à l'endpoint de l'API.
 
+Pour faciliter le test des APIs un Swagger est déjà mis en place.
 ## Démarrage
 
 Pour démarrer l'application, exécutez la commande suivante :
